@@ -15,7 +15,7 @@ import java.util.Date;
  */
 
 @Description(
-        name = "from_euro_notation",
+        name = "remove_thousand_separator",
         value = "_FUNC_(text) - Returns converted $ by removing ',' from money",
         extended = "Examples:\n"
                 + "  > SELECT _FUNC_('5,342,321.43') FROM src LIMIT 1;\n"
@@ -33,7 +33,7 @@ public class RemoveThousandSeparator extends UDF {
     static final Log LOG = LogFactory.getLog(RemoveThousandSeparator.class.getName());
 
     public Text evaluate(Text value) {
-        String without = value.toString().replaceAll(",","");
+        String without = value.toString().replaceAll(",|'","");
         result.set(without);
         return result;
     }
