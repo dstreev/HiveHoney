@@ -50,6 +50,7 @@ public class ConvertToDate extends UDF {
             } catch (Exception e) {
                 // Log an error.
                 LOG.error("Problem with date format: " + format.toString(),e);
+                throw new RuntimeException("Problem with date format: " + format.toString());
             }
 
         }
@@ -60,14 +61,18 @@ public class ConvertToDate extends UDF {
         DateFormat df = getFormatter(incomingFormat);
         if (df != null) {
             Date incoming = null;
-            try {
-                incoming = df.parse(source.toString());
-            } catch (ParseException e) {
-                LOG.error("Problem parsing date: " + source.toString() + " with source format: " + incomingFormat.toString(), e);
-            }
+            if (source != null) {
+                try {
+                    incoming = df.parse(source.toString());
+                } catch (ParseException e) {
+                    LOG.error("Problem parsing date: " + source.toString() + " with source format: " + incomingFormat.toString(), e);
+                }
 
-            if (incoming != null) {
-                result.set(defaultFormatter.format(incoming));
+                if (incoming != null) {
+                    result.set(defaultFormatter.format(incoming));
+                } else {
+                    result.set("");
+                }
             } else {
                 result.set("");
             }
