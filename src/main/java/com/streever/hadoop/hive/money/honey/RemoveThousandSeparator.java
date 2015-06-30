@@ -34,7 +34,14 @@ public class RemoveThousandSeparator extends UDF {
 
     public Text evaluate(Text value) {
         String without = value.toString().replaceAll(",|'","");
-        result.set(without);
+        if (without.startsWith("(")) {
+            // This means it is surrounded by parentheses and is negative.
+            StringBuilder sb = new StringBuilder("-");
+            sb.append(without.substring(1,without.length()-1));
+            result.set(sb.toString());
+        } else {
+            result.set(without);
+        }
         return result;
     }
 
