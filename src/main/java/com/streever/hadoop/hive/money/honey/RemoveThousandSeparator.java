@@ -33,6 +33,8 @@ public class RemoveThousandSeparator extends UDF {
     static final Log LOG = LogFactory.getLog(RemoveThousandSeparator.class.getName());
 
     public Text evaluate(Text value) {
+        if (value == null)
+            return null;
         String without = value.toString().replaceAll(",|'","");
         if (without.startsWith("(")) {
             // This means it is surrounded by parentheses and is negative.
