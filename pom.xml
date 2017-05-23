@@ -4,15 +4,15 @@
     <groupId>com.streever.hadoop.hive</groupId>
     <artifactId>hive.honey</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <name>HIVE :: Honey</name>
     <url>http://streever.altassian.net/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hdp.version>2.4.0.2.1.5.0-695</hdp.version>
+        <hdp.version>2.7.1.2.4.2.8-3</hdp.version>
 
-        <hive.version>0.13.0.2.1.5.0-695</hive.version>
+        <hive.version>1.2.1000.2.4.2.8-3</hive.version>
 
         <junit.version>4.11</junit.version>
 

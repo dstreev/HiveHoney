@@ -58,7 +58,7 @@ public class CombineToTimestamp extends UDF {
 
     public Text evaluate(Text dateFormat, Text dateSource, Text timeFormat, Text timeSource) {
         DateFormat df = getFormatter(dateFormat, timeFormat);
-        if (df != null) {
+        if (df != null && dateSource != null && timeSource != null) {
             Date incoming = null;
             String inboundTS = null;
             try {

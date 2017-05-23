@@ -61,7 +61,7 @@ public class ConvertToDate extends UDF {
         DateFormat df = getFormatter(incomingFormat);
         if (df != null) {
             Date incoming = null;
-            if (source != null) {
+            if (source != null && source != null) {
                 try {
                     incoming = df.parse(source.toString());
                 } catch (ParseException e) {

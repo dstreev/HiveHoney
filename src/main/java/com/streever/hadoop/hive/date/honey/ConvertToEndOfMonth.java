@@ -54,7 +54,7 @@ public class ConvertToEndOfMonth extends UDF {
 
     public Text evaluate(Text sourceFormat, Text source) {
         DateFormat df = getFormatter(sourceFormat);
-        if (df != null) {
+        if (df != null && source != null) {
             Date incoming = null;
             try {
                 incoming = df.parse(source.toString());
