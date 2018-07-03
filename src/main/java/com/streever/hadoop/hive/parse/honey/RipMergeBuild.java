@@ -54,7 +54,9 @@ public class RipMergeBuild extends UDF {
         while (currLoc < base_elements.length) {
             for (int i = 0;i < group_size;i++) {
                 if (elements.contains(i)) {
-                    sb.append(base_elements[currLoc+i]).append(separator);
+                    // Don't exceed length
+                    if (currLoc+i < base_elements.length)
+                        sb.append(base_elements[currLoc+i]).append(separator);
                 }
             }
             currLoc += group_size;
